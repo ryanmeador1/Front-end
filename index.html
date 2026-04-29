@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Dashboard</title>
+    <link rel="stylesheet" href="profiles.css"> <!--Links the stylesheet to HTML webpage-->
+    <link rel="icon" href="woof.png"> <!--Sets the icon-->
+</head>
+<body>
+    <section class="box"> <!--Used the section tag so it would be easier designing with CSS-->
+    <h2 style="text-align: center;">Personal Dashboard</h2>
+    
+    <form id="form"> <!--Form for the user to enter information into the webpage-->
+    <h3 style="text-align: center;">Enter your info</h3>
+    <label>Name:</label> <br>
+    <input type="text" placeholder="Enter your name" id="name" class="textBox"> <br> <br>
+    <label>Email:</label> <br>
+    <input type="email" placeholder="Enter your Email" id="email" class="textBox"> <br> <br>
+    <label>Favorite color:</label> <br>
+    <input type="text" placeholder="Enter your Favorite color" id="favoriteColor" class="textBox"> <br> <br>
+    <button type="submit" id="submit" class="textBox">Update Profile</button> <br><br>
+    </form> 
+    </section>
+
+    <section class="box"> 
+    <form id="form2"> <!--Form for the user to input to do list-->
+    <h2 style="text-align: center;">Add a to do list</h2>
+    <h3 style="text-align: center;">Enter tasks</h3>
+    <label>Task:</label> <br> 
+    <input type="text" id="task" class="textBox" placeholder="Enter the task that needs to be done"> <br> <br>
+
+    <label>Type:</label> <br>
+    <select name="type" id="taskType" class="textBox">
+        <option value="Personal">Personal</option>
+        <option value="Professional">Professional</option>
+    </select> <br> <br>
+
+
+    <label>Due date:</label> <br>
+    <input type="date" id="dueDate" class="textBox"> <br> <br>
+
+    <button type="submit" id="submit2" class="textBox">Update to do list</button>
+
+    </form>
+    </section>
+
+    <div class="box"> <!--Area for users input to be displayed-->
+    <h2 style="color: black; text-align: center;">Profile and to do list</h2>
+    <strong><p id="text" ></p>
+    <p id="list"></p></strong>
+
+    <button id="perBtn" type="submit" class="textBox">Want to only see personal task?</button> <br><br>
+    <button id="proBtn" type="submit" class="textBox">Want to only see professional task?</button> <br> <br>
+    <button id="reset" type="reset" class="textBox">Restore old list?</button>
+    </div>
+
+    <div class="box">
+    <h2 style="color: black;text-align: center;">Other users</h2>
+    <h3 style="color: black;text-align: center;">Using API's</h3>
+    <ul id="apiList"></ul>
+    <button id="API" class="textBox" type="submit">Click me</button> <br>
+    <button id="reset" class="hide" type="reset">Reset</button>
+    </div>
+
+    <script src="app4.js"></script> <!--Links the JavaScript file to the HTML file-->
+</body>
+</html>
