@@ -9,12 +9,12 @@ let access = false;
 console.log(toDoList); 
 
 function userProfile(name,email,favColor) { // Closure to display user input. 
- 
+
 return function innerprofile(){ 
     return`
     Name: ${name} 
     Email: ${email} 
-    Favorite color: ${favColor}`
+    Favorite color: ${favColor}` 
 };
 }; 
 const list = document.getElementById('apiList');
@@ -48,6 +48,48 @@ async function getUser() {
            
    };  
 }; 
+
+async function backend() {
+    try {
+        const data = await fetch('https://info-350-project-2-niui.onrender.com/api/books'); 
+        const backendData = await data.json(); 
+        console.log(backendData);
+        document.getElementById('backendPost').innerHTML =``;
+        backendData.forEach(book => { 
+        document.getElementById('backendPost').innerHTML+=`
+        <p>Book: ${book.Book}</p>
+        `;
+        }); 
+
+    } catch (error) {
+    alert(`Sorry there was an error: ${error}`); 
+    document.getElementById('backendPost').innerHTML=`Sorry there was an error: ${error}`; 
+    }
+}; 
+
+async function post(books) {
+    if(!books){
+        return
+    }
+    try {
+    await fetch('https://info-350-project-2-niui.onrender.com/api/books', { // 
+       method: 'POST', 
+       headers: {
+        'content-type': 'application/json'
+       },
+       body: JSON.stringify( {
+        Book: books
+       })
+     }).then(res => {
+        return res.json()
+     }).then(data => console.log(data));   
+      
+    }catch (error) {
+    alert(`Sorry there was an error: ${error}`);
+     document.getElementById('postResults').innerHTML=`Sorry there was an error: ${error}`;  
+    }
+}; 
+
  
 const submit = document.getElementById("submit").addEventListener("click", function(event){ // Listner for submit Profile button. 
     event.preventDefault(); // Ensures users inputs stage on webpage without refreshing. 
@@ -206,3 +248,16 @@ document.getElementById("API").classList.add("hide");
 document.getElementById("reset").classList.remove("hide"); 
 
 });
+
+document.getElementById("backend").addEventListener("click",()=>{
+backend(); 
+}); 
+
+document.getElementById("post").addEventListener("click",()=>{
+const book = document.getElementById('postRes').value;
+post(book); 
+if (!book){
+  alert('Please ensure field is complete.')
+};
+}); 
+
